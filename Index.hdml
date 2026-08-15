@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>GVONIX | AI Automation That Works for Your Business</title>
+  <meta
+    name="description"
+    content="GVONIX helps businesses automate customer communication, lead generation, support and repetitive workflows with practical AI solutions."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: #0b1120;
+      --card: rgba(17, 24, 39, 0.72);
+      --border: rgba(255,255,255,0.09);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --blue: #3b82f6;
+      --purple: #8b5cf6;
+      --green: #22c55e;
+      --max: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(59,130,246,.13), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(139,92,246,.11), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(7,11,20,.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid transparent;
+      transition: .3s;
+    }
+
+    nav.scrolled {
+      border-bottom-color: var(--border);
+      background: rgba(7,11,20,.92);
+    }
+
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-cta {
+      background: white;
+      color: #070b14 !important;
+      padding: 11px 18px;
+      border-radius: 9px;
+      font-weight: 700;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 130px 0 80px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: rgba(255,255,255,.035);
+      color: #cbd5e1;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 14px var(--green);
+    }
+
+    .hero h1 {
+      font-size: clamp(46px, 7vw, 82px);
+      line-height: 1.02;
+      letter-spacing: -4px;
+      font-weight: 800;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 25px auto 35px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: .25s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      border: none;
+      box-shadow: 0 10px 35px rgba(59,130,246,.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 45px rgba(59,130,246,.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.04);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.08);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 55px;
+    }
+
+    .section-heading .eyebrow {
+      color: #60a5fa;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* CARDS */
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      backdrop-filter: blur(15px);
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(96,165,250,.3);
+      background: rgba(20,30,48,.82);
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: rgba(59,130,246,.12);
+      color: #60a5fa;
+      font-size: 22px;
+      margin-bottom: 22px;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* SERVICES */
+
+    .service-card {
+      min-height: 245px;
+    }
+
+    .service-card h3 {
+      font-size: 21px;
+    }
+
+    /* PROCESS */
+
+    .process {
+      position: relative;
+    }
+
+    .step-number {
+      font-size: 13px;
+      color: #60a5fa;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    /* PRICING */
+
+    .pricing-wrapper {
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .pricing-card {
+      position: relative;
+      padding: 40px;
+      border-radius: 22px;
+      border: 1px solid rgba(96,165,250,.25);
+      background:
+        radial-gradient(circle at top right, rgba(59,130,246,.12), transparent 35%),
+        var(--card);
+    }
+
+    .pricing-label {
+      color: #60a5fa;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .price {
+      font-size: 54px;
+      font-weight: 800;
+      letter-spacing: -3px;
+      margin: 10px 0;
+    }
+
+    .price span {
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .features {
+      list-style: none;
+      margin: 28px 0;
+    }
+
+    .features li {
+      color: #cbd5e1;
+      margin: 13px 0;
+      font-size: 14px;
+    }
+
+    .features li::before {
+      content: "✓";
+      color: #60a5fa;
+      font-weight: 800;
+      margin-right: 10px;
+    }
+
+    .full-btn {
+      width: 100%;
+    }
+
+    /* CTA */
+
+    .cta-section {
+      padding: 80px 0 110px;
+    }
+
+    .cta-box {
+      text-align: center;
+      padding: 70px 30px;
+      border-radius: 25px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(59,130,246,.16), transparent 50%),
+        rgba(255,255,255,.025);
+    }
+
+    .cta-box h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: auto auto 28px;
+    }
+
+    /* CONTACT */
+
+    .contact-form {
+      max-width: 750px;
+      margin: auto;
+      padding: 35px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-bottom: 7px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.22);
+      color: white;
+      outline: none;
+      font-family: inherit;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #3b82f6;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 35px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    /* ANIMATION */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 14px;
+        right: 14px;
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        background: #0b1120;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px;
+      }
+
+      .nav-cta {
+        text-align: center;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero h1 {
+        letter-spacing: -2.5px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .contact-form,
+      .pricing-card {
+        padding: 25px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+
+      <a href="#home" class="logo">GVO<span>NIX</span></a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#process">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact" class="nav-cta">Get Started</a>
+      </div>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        ☰
+      </button>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content reveal">
+
+          <div class="badge">
+            <span class="dot"></span>
+            AI Automation for Modern Businesses
+          </div>
+
+          <h1>
+            Automate More.<br />
+            <span class="gradient-text">Grow Faster.</span>
+          </h1>
+
+          <p>
+            GVONIX helps businesses automate customer communication,
+            lead generation, support and repetitive workflows with
+            practical AI solutions.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">
+              Start Automating →
+            </a>
+
+            <a href="#services" class="btn btn-secondary">
+              Explore Services
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PROBLEM -->
+    <section>
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div class="eyebrow">The Problem</div>
+          <h2>Stop wasting time on repetitive work.</h2>
+          <p>
+            Your team should focus on growth — not tasks that AI can handle.
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+
+          <div class="card reveal">
+            <div class="icon">⏱</div>
+            <h3>Too Much Manual Work</h3>
+            <p>
+              Repetitive tasks consume valuable time that could be spent
+              on customers and business growth.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">💬</div>
+            <h3>Missed Conversations</h3>
+            <p>
+              Slow responses can cause potential customers to move
+              on to competitors.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">📉</div>
+            <h3>Lost Opportunities</h3>
+            <p>
+              Without efficient systems, leads and customer requests
+              can easily slip through the cracks.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div class="eyebrow">What We Do</div>
+          <h2>AI solutions built around your business.</h2>
+          <p>
+            Simple, practical automation designed to remove repetitive
+            work and improve customer experiences.
+          </p>
+        </div>
+
+        <div class="grid grid-4">
+
+          <div class="card service-card reveal">
+            <div class="icon">🤖</div>
+            <h3>AI Chatbots</h3>
+            <p>
+              AI-powered chat experiences that answer questions,
+              qualify visitors and assist customers.
+            </p>
+          </div>
+
+          <div class="card service-card reveal">
+            <div class="icon">⚡</div>
+            <h3>AI Automation</h3>
+            <p>
+              Automate repetitive workflows and connect the tools
+              your business already uses.
+            </p>
+          </div>
+
+          <div class="card service-card reveal">
+            <div class="icon">🎯</div>
+            <h3>Lead Generation</h3>
+            <p>
+              Build systems that capture, organize and follow up
+              with potential customers.
+            </p>
+          </div>
+
+          <div class="card service-card reveal">
+            <div class="icon">🌐</div>
+            <h3>AI Websites</h3>
+            <p>
+              Modern websites designed to communicate your value
+              and convert visitors into conversations.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div class="eyebrow">How It Works</div>
+          <h2>From idea to automation.</h2>
+          <p>
+            A straightforward process without unnecessary complexity.
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+
+          <div class="card reveal">
+            <div class="step-number">01 — DISCOVER</div>
+            <h3>Understand Your Business</h3>
+            <p>
+              We identify repetitive tasks, customer pain points
+              and opportunities for automation.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="step-number">02 — BUILD</div>
+            <h3>Build Your Solution</h3>
+            <p>
+              We design and implement the AI tools and workflows
+              that fit your business needs.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="step-number">03 — LAUNCH</div>
+            <h3>Launch & Improve</h3>
+            <p>
+              Your automation goes live and can be refined as
+              your business grows.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div class="eyebrow">Pricing</div>
+          <h2>Start with a conversation.</h2>
+          <p>
+            Every business has different automation needs.
+          </p>
+        </div>
+
+        <div class="pricing-wrapper">
+          <div class="pricing-card reveal">
+
+            <div class="pricing-label">
+              Custom AI Automation
+            </div>
+
+            <div class="price">
+              Let's Talk
+            </div>
+
+            <p style="color:#94a3b8;">
+              Get a solution designed around your business.
+            </p>
+
+            <ul class="features">
+              <li>AI chatbot solutions</li>
+              <li>Business workflow automation</li>
+              <li>Lead generation systems</li>
+              <li>AI website solutions</li>
+              <li>Custom integrations</li>
+              <li>Ongoing optimization</li>
+            </ul>
+
+            <a href="#contact" class="btn btn-primary full-btn">
+              Request a Consultation
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+
+        <div class="cta-box reveal">
+          <h2>Ready to automate your business?</h2>
+
+          <p>
+            Let's identify where AI can save time, improve customer
+            experiences and create a more efficient workflow.
+          </p>
+
+          <a href="#contact" class="btn btn-primary">
+            Talk to GVONIX →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div class="eyebrow">Contact</div>
+          <h2>Let's build something smarter.</h2>
+          <p>
+            Tell us about your business and what you want to automate.
+          </p>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm">
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Your name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="you@company.com"
+                required
+              />
+            </div>
+
+            <div class="form-group full">
+              <label for="company">Company</label>
+              <input
+                type="text"
+                id="company"
+                placeholder="Your company"
+              />
+            </div>
+
+            <div class="form-group full">
+              <label for="message">What would you like to automate?</label>
+              <textarea
+                id="message"
+                placeholder="Tell us about your business..."
+                required
+              ></textarea>
+            </div>
+
+          </div>
+
+          <button type="sub
